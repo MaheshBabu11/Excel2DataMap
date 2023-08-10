@@ -1,12 +1,14 @@
 package com.excel2datamap;
 
-
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +24,9 @@ public class DataMapBuilder {
             if (isExcelFile(fileName)) {
                 readExcelFile(fileName);
             }
-        }
-        else if(fileName.endsWith(".csv")){
+        } else if (fileName.endsWith(".csv")) {
             readCsvFile(fileName);
-        }
-        else {
+        } else {
 
             return;
         }
@@ -70,6 +70,7 @@ public class DataMapBuilder {
         }
 
     }
+
     public ExcelDataMap getDataMap() {
         return excelDataMap;
     }
