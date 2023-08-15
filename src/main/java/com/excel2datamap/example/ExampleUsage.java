@@ -14,8 +14,9 @@ public class ExampleUsage {
         DataMapBuilder dataMapBuilder = ExcelConversionFactory.getDataMapBuilder();
         ExcelFileTypeDetector excelFileTypeDetector = ExcelConversionFactory.getExcelFileTypeDetector();
         try {
-            System.out.println(excelFileTypeDetector.detectExcelFileType("C:\\Users\\MBABU3\\Excel2DataMap\\src\\main\\resources\\Book3.xls"));
-            dataMapBuilder.readFile("C:\\Users\\MBABU3\\Excel2DataMap\\src\\main\\resources\\Book6.xlsb");
+            String BASE_PATH = System.getProperty("user.dir");
+            System.out.println(excelFileTypeDetector.detectExcelFileType(BASE_PATH +"\\src\\main\\resources\\Book1.xlsx"));
+            dataMapBuilder.readFile(BASE_PATH +"\\src\\main\\resources\\Book1.xlsx");
             ExcelDataMap excelDataMap = dataMapBuilder.getDataMap();
 
             for (Map.Entry<String, List<String>> entry : excelDataMap.getDataMap().entrySet()) {
