@@ -13,8 +13,8 @@ public class ExcelFileTypeDetector {
      * This method helps to determine the file format of the excel file.
      *
      * @param filePath The path where the file is stored.
-     * @return @{@link String} The format of the file.
-     * @throws IOException Exception in opening the file
+     * @return {@link String} The format of the file.
+     * @throws IOException Exception in opening/reading the file
      */
     public static String detectExcelFileType(String filePath) throws IOException {
         try (InputStream inputStream = new FileInputStream(filePath)) {
@@ -37,7 +37,7 @@ public class ExcelFileTypeDetector {
      * This method verifies the magic number formats for the file type XLSX
      *
      * @param magicNumber The byte array containing the first 8 bytes of the file
-     * @return @{@link Boolean}
+     * @return {@link Boolean}
      */
     static boolean isXLSX(byte[] magicNumber) {
         // Check for the magic number of XLSX files (Office Open XML format)

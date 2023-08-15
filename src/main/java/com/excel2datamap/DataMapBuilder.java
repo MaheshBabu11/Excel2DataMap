@@ -30,9 +30,10 @@ public class DataMapBuilder {
      * The data map is of type @{@link ExcelDataMap}
      *
      * @param fileName The path where the file is stored.
-     * @throws @{@link InvalidFileFormatException} File format exception
+     * @throws InvalidFileFormatException File format exception
+     * @throws IOException Exception in opening/reading the Excel file
      */
-    public void readFile(String fileName) throws Exception {
+    public void readFile(String fileName) throws InvalidFileFormatException, IOException {
         if (fileName.matches(".*\\.(xls|xlsx)$")) {
             if (excelFileTypeDetector.isExcelFile(fileName)) {
                 readExcelFile(fileName);
@@ -99,7 +100,7 @@ public class DataMapBuilder {
     /**
      * This method returns the generated datamaps
      *
-     * @return @{@link ExcelDataMap}
+     * @return {@link ExcelDataMap} The generated datamap from the Excel file.
      */
     public ExcelDataMap getDataMap() {
         return excelDataMap;

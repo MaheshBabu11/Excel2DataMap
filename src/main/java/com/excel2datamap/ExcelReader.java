@@ -17,7 +17,7 @@ public class ExcelReader {
      *
      * @param filePath The path where the file is stored.
      * @return {@code List<String>}
-     * @throws IOException
+     * @throws IOException  Exception in opening/reading the file
      */
     public List<Sheet> readExcel(String filePath) throws IOException {
         List<Sheet> sheets = new ArrayList<>();
@@ -32,9 +32,9 @@ public class ExcelReader {
     }
 
     /**
-     * This method reads each Excel sheet and converts them into a List<String[]>
+     * This method reads each Excel sheet and converts them into a {@code List<String[]>}
      *
-     * @param sheet
+     * @param sheet The current sheet from the Excel
      * @return {@code List<String[]>}
      */
     public List<String[]> readSheet(Sheet sheet) {
