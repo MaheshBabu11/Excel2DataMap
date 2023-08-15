@@ -51,7 +51,7 @@ public class DataMapBuilder {
      * @param filePath The path where the file is stored.
      * @throws IOException Exception in opening the file
      */
-    private void readExcelFile(String filePath) throws IOException {
+    void readExcelFile(String filePath) throws IOException {
         ExcelReader excelReader = new ExcelReader();
         List<Sheet> sheets = excelReader.readExcel(filePath);
         for (Sheet sheet : sheets) {
@@ -74,7 +74,7 @@ public class DataMapBuilder {
      * @param filePath The path where the file is stored.
      * @throws IOException Exception in opening the file
      */
-    private void readCsvFile(String filePath) throws IOException {
+    void readCsvFile(String filePath) throws IOException {
         CSVFormat csvFormat = CSVFormat.DEFAULT.withDelimiter('\t');
         try (CSVParser csvParser = new CSVParser(new FileReader(filePath), csvFormat)) {
             List<String> headers = new ArrayList<>();
@@ -112,7 +112,7 @@ public class DataMapBuilder {
      * @param columnIndex The index of the column whose data are to be extracted from the Excel sheet.
      * @return {@code List<String>}
      */
-    private List<String> getColumnValues(List<String[]> excelData, int columnIndex) {
+    List<String> getColumnValues(List<String[]> excelData, int columnIndex) {
         List<String> columnValues = new ArrayList<>();
         for (int i = 1; i < excelData.size(); i++) {
             String[] rowData = excelData.get(i);
