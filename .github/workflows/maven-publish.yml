@@ -35,4 +35,4 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run:  mvn -V -B -X release:prepare release:perform
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
