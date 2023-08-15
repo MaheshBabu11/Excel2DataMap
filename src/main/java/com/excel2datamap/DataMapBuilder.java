@@ -5,34 +5,53 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class contains method to read the excel file and convert it into datamap @{@link ExcelDataMap}
+ */
 public class DataMapBuilder {
-    private final ExcelDataMap excelDataMap;
 
-    public DataMapBuilder() {
+    private final ExcelDataMap excelDataMap;
+    private final ExcelFileTypeDetector excelFileTypeDetector;
+
+    public DataMapBuilder(ExcelFileTypeDetector excelFileTypeDetector) {
+        this.excelFileTypeDetector = excelFileTypeDetector;
         excelDataMap = new ExcelDataMap();
     }
 
-    public void readFile(String fileName) throws IOException {
+    /**
+     * This method reads the Excel files and determine if they are of the supported formats
+     * if so it converts them into datamaps, The first row is considered as the header row which is basically
+     * the key of the data map followed by all the values in that column as the values of the key.
+     * The data map is of type @{@link ExcelDataMap}
+     *
+     * @param fileName The path where the file is stored.
+     * @throws @{@link InvalidFileFormatException} File format exception
+     */
+    public void readFile(String fileName) throws Exception {
         if (fileName.matches(".*\\.(xls|xlsx)$")) {
-            if (isExcelFile(fileName)) {
+            if (excelFileTypeDetector.isExcelFile(fileName)) {
                 readExcelFile(fileName);
             }
         } else if (fileName.endsWith(".csv")) {
             readCsvFile(fileName);
         } else {
-
-            return;
+            throw new InvalidFileFormatException();
         }
     }
 
-    public void readExcelFile(String filePath) throws IOException {
+    /**
+     * This method takes in the file path and reads the Excel file using apache poi library
+     * It supports multiple sheet support and formats such as XLS and XLSX.
+     *
+     * @param filePath The path where the file is stored.
+     * @throws IOException Exception in opening the file
+     */
+    private void readExcelFile(String filePath) throws IOException {
         ExcelReader excelReader = new ExcelReader();
         List<Sheet> sheets = excelReader.readExcel(filePath);
         for (Sheet sheet : sheets) {
@@ -48,7 +67,14 @@ public class DataMapBuilder {
         }
     }
 
-    public void readCsvFile(String filePath) throws IOException {
+    /**
+     * This method takes in the file path and reads the Excel file using apache common csv library
+     * It supports multiple sheet support and CSV file format.
+     *
+     * @param filePath The path where the file is stored.
+     * @throws IOException Exception in opening the file
+     */
+    private void readCsvFile(String filePath) throws IOException {
         CSVFormat csvFormat = CSVFormat.DEFAULT.withDelimiter('\t');
         try (CSVParser csvParser = new CSVParser(new FileReader(filePath), csvFormat)) {
             List<String> headers = new ArrayList<>();
@@ -68,13 +94,24 @@ public class DataMapBuilder {
                 }
             }
         }
-
     }
 
+    /**
+     * This method returns the generated datamaps
+     *
+     * @return @{@link ExcelDataMap}
+     */
     public ExcelDataMap getDataMap() {
         return excelDataMap;
     }
 
+    /**
+     * This method returns the values of a column from the sheet based on the column index
+     *
+     * @param excelData   The data per excel sheet
+     * @param columnIndex The index of the column whose data are to be extracted from the Excel sheet.
+     * @return {@code List<String>}
+     */
     private List<String> getColumnValues(List<String[]> excelData, int columnIndex) {
         List<String> columnValues = new ArrayList<>();
         for (int i = 1; i < excelData.size(); i++) {
@@ -86,19 +123,4 @@ public class DataMapBuilder {
         return columnValues;
     }
 
-    public boolean isExcelFile(String filePath) throws IOException {
-        try (InputStream inputStream = new FileInputStream(filePath)) {
-            byte[] magicNumber = new byte[8];
-            int bytesRead = inputStream.read(magicNumber);
-
-            if (bytesRead >= 8) {
-                return (magicNumber[0] == 0x50 && magicNumber[1] == 0x4B && magicNumber[2] == 0x03 && magicNumber[3] == 0x04 &&
-                        magicNumber[4] == 0x14 && magicNumber[5] == 0x00 && magicNumber[6] == 0x06 && magicNumber[7] == 0x00) ||
-                        (magicNumber[0] == (byte) 0xD0 && magicNumber[1] == (byte) 0xCF && magicNumber[2] == (byte) 0x11 && magicNumber[3] == (byte) 0xE0 &&
-                                magicNumber[4] == (byte) 0xA1 && magicNumber[5] == (byte) 0xB1 && magicNumber[6] == (byte) 0x1A && magicNumber[7] == (byte) 0xE1);
-            }
-        }
-        return false;
-    }
 }
-

@@ -8,7 +8,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used for reading the Excel files of XLS and XLSX format.
+ */
 public class ExcelReader {
+    /**
+     * This method reads the Excel file and converts it into a list of sheets for processing
+     *
+     * @param filePath The path where the file is stored.
+     * @return {@code List<String>}
+     * @throws IOException
+     */
     public List<Sheet> readExcel(String filePath) throws IOException {
         List<Sheet> sheets = new ArrayList<>();
         FileInputStream fileInputStream = new FileInputStream(new File(filePath));
@@ -21,6 +31,12 @@ public class ExcelReader {
         return sheets;
     }
 
+    /**
+     * This method reads each Excel sheet and converts them into a List<String[]>
+     *
+     * @param sheet
+     * @return {@code List<String[]>}
+     */
     public List<String[]> readSheet(Sheet sheet) {
         List<String[]> data = new ArrayList<>();
         for (Row row : sheet) {
