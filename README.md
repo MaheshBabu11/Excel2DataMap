@@ -2,7 +2,7 @@
 
 ---
 
-This is a java library that is used to convert Excel files from  various formats like .xls,xls,csv to 
+This is a java package that is used to convert Excel files from  various formats like .xls,xls,csv to 
 datamaps so that they can be directly used to insert data into database tables.
 
 ### Usage :
