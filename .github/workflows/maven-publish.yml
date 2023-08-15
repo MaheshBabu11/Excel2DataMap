@@ -30,6 +30,6 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy
+      run: mvn deploy -Dmaven.resolver.transport=wagon
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
