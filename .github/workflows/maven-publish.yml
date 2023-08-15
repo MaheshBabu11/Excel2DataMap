@@ -35,4 +35,4 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run:  mvn -V -B -X release:clean release:prepare release:perform -DcheckModificationExcludeList=settings.xml
       env:
-        GITHUB_TOKEN: ${{ github.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
