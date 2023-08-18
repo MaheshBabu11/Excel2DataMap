@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.maheshbabu11</groupId>
     <artifactId>Excel2DataMap</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Excel2DataMap</name>
     <description>A library for converting excel files to Datamaps</description>
@@ -12,7 +12,7 @@
         <url>https://github.com/MaheshBabu11/Excel2DataMap.git</url>
         <connection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</connection>
         <developerConnection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</developerConnection>
-      <tag>Excel2DataMap-1.0.4</tag>
+      <tag>Excel2DataMap-0.20</tag>
   </scm>
     <licenses>
         <license>
