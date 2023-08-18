@@ -43,4 +43,4 @@ jobs:
       run:  |
          mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.GITHUB_TOKEN }}
