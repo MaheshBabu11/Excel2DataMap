@@ -43,6 +43,6 @@ jobs:
         mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
         cat settings.xml
       env:
-          GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-          GH_ACTOR : 'MaheshBabu11'
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          PUBLISH_ACTOR : 'MaheshBabu11'
           
