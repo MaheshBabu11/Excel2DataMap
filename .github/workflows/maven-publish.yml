@@ -38,7 +38,10 @@ jobs:
         git commit -m "added version changes"
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
+      run: |
+        cat settings.xml
+        mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
+        cat settings.xml
       env:
           GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
           GH_ACTOR : 'MaheshBabu11'
