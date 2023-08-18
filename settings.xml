@@ -25,7 +25,7 @@
         <server>
             <id>github</id>
             <username>MaheshBabu11</username>
-            <password>${env.GITHUB_TOKEN}</password>
+            <password>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</password>
         </server>
     </servers>
 </settings>
