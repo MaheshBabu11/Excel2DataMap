@@ -45,3 +45,4 @@ jobs:
          mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
       env:
         GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+        GITHUB_ACTOR : 'MaheshBabu11'
