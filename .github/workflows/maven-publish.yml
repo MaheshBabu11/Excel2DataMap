@@ -41,6 +41,6 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
       env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-          GITHUB_ACTOR : 'MaheshBabu11'
+          GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          GH_ACTOR : 'MaheshBabu11'
           
