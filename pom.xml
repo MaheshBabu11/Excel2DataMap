@@ -22,12 +22,11 @@
             <url>https://maheshbabu11.dev/</url>
         </developer>
     </developers>
-        <scm>
-            <url>https://github.com/MaheshBabu11/Excel2DataMap</url>
-            <connection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</connection>
-            <developerConnection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</developerConnection>
-          <tag>HEAD</tag>
-  </scm>
+    <scm>
+        <url>https://github.com/MaheshBabu11/Excel2DataMap.git</url>
+        <connection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</connection>
+        <developerConnection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</developerConnection>
+    </scm>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
