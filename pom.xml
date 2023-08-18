@@ -12,7 +12,8 @@
         <url>https://github.com/MaheshBabu11/Excel2DataMap.git</url>
         <connection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</connection>
         <developerConnection>scm:git:https://github.com/MaheshBabu11/Excel2DataMap.git</developerConnection>
-    </scm>
+      <tag>Excel2DataMap-0.20</tag>
+  </scm>
     <licenses>
         <license>
             <name>MIT License</name>
