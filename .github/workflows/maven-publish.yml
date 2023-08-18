@@ -40,6 +40,8 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: |
         cat settings.xml
+        echo "My Token: $PUBLISH_TOKEN"
+        echo "My Actor: $PUBLISH_ACTOR"
         mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
         cat settings.xml
       env:
