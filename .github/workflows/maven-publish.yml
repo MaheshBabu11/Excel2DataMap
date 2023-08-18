@@ -38,13 +38,8 @@ jobs:
         git commit -m "added version changes"
 
     - name: Publish to GitHub Packages Apache Maven
-      run: |
-        cat settings.xml
-        echo "My Token: $PUBLISH_TOKEN"
-        echo "My Actor: $PUBLISH_ACTOR"
-        mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform   
-        cat settings.xml
+      run: mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform       
       env:
-          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-          PUBLISH_ACTOR : 'MaheshBabu11'
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          GITHUB_ACTOR : 'MaheshBabu11'
           
