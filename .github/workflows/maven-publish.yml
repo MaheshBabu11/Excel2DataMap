@@ -22,11 +22,7 @@ jobs:
     - run: |
           git config user.name "GitHub Actions"
           git config user.email "git@github.com"
-          git stash
-          
-    - name: Clear Workspace
-      run: rm -rf ${{ github.workspace }}
-      
+          git stash      
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -40,7 +36,7 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run:  |
-        mvn -V -B -X release:clean release:prepare release:perform 
+        mvn -V -B -X release:clean release:perform 
         git stash pop      
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
