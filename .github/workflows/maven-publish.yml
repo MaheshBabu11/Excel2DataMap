@@ -34,6 +34,9 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Debug Pom File
+      run: cat pom.xml
+
     - name: Publish to GitHub Packages Apache Maven
       run:  |
         mvn -V -B -X release:clean release:perform 
