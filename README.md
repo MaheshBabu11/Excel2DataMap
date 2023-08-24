@@ -1,5 +1,6 @@
 # Excel2DataMap
 
+[![Maven Package](https://github.com/MaheshBabu11/Excel2DataMap/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/MaheshBabu11/Excel2DataMap/actions/workflows/maven-publish.yml)
 ---
 
 This is a java package that is used to convert Excel files from  various formats like .xls,xls,csv to 
