@@ -27,7 +27,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }}  # location for the settings.xml file
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
@@ -38,8 +37,10 @@ jobs:
         git commit -m "added version changes"
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -V -B -X -Darguments="-DskipTests" release:clean release:prepare release:perform       
+      run: mvn deploy
       env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR : 'MaheshBabu11'
+
+  
           
